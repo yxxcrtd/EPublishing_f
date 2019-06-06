@@ -1,0 +1,244 @@
+@charset "utf-8";
+
+/*页面滚动代码*/
+.outer {
+	width: 1022px;
+	height: 78px;
+	position: relative;
+	float: left;
+	overflow: hidden;
+	border: 1px solid #EEEEEE;
+}
+
+.jourOuter {
+	width: 760px;
+	height: 127px;
+}
+
+.outer .btn {
+	overflow: hidden;
+	height: 20px;
+	position: absolute;
+	bottom: 0;
+	zoom: 1;
+	z-index: 3;
+	width: 1024px;
+	padding-top: 4px;
+}
+
+.outer .newBtn {
+	width: 1024px;
+}
+
+.outer .jourBtn {
+	width: 760px;
+}
+
+.outer .btn li {
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	text-align: center;
+	color: #FFFFFF;
+	background: #9ba1a1;
+	margin-left: 10px;
+	border-radius: 50%;
+	cursor: pointer;
+	float: left;
+}
+
+.outer .btn li.on {
+	background: #FF7700;
+}
+
+.outer .prev, .outer .next {
+	display: none;
+	width: 40px;
+	height: 100px;
+	position: absolute;
+	top: 115px;
+}
+
+.outer .prev {
+	left: 0;
+}
+
+.outer .next {
+	right: 0;
+	background-position: right;
+}
+/*页面滚动代码*/
+
+/*左右滚动条开始*/
+.featureContainer {
+	width: 760px;
+}
+
+.wrap {
+	overflow: hidden;
+}
+
+.load {
+	text-indent: -9999px;
+	margin: 0px auto;
+	width: 760px;
+	display: none;
+	height: 100px;
+}
+
+.feature {
+	position: relative;
+	margin-top: 5px;
+}
+
+.feature .button {
+	position: absolute;
+	width: 730px;
+	top: 72px;
+	left: 0px;
+}
+
+.feature .prev1, .feature .prev2, .feature .prev3 {
+	text-indent: -9999px;
+	width: 10px;
+	display: block;
+	background: url(../images/feature_left.gif) center top;
+	float: left;
+	height: 15px;
+	top: -250px;
+	position: relative;
+	text-decoration: none;
+	outline: none;
+}
+
+.feature .chPrev1 {
+	top: -170px;
+}
+
+.feature .next1, .feature .next2, .feature .next3 {
+	text-indent: -9999px;
+	width: 10px;
+	display: block;
+	background: url(../images/feature_right.gif) center top;
+	float: right;
+	height: 15px;
+	top: -250px;
+	position: relative;
+	text-decoration: none;
+	outline: none;
+}
+
+.feature .chNext1 {
+	top: -170px;
+}
+
+.feature .enNext1 {
+	top: -340px;
+}
+
+.feature .prev1:hover, .feature .prev2:hover, .feature .prev2:hover {
+	background-position: center bottom;
+}
+
+.feature .next1:hover, .feature .next2:hover, .feature .next3:hover {
+	background-position: center bottom;
+}
+
+.featureUL {
+	position: relative;
+	padding-bottom: 0px;
+	list-style-type: none;
+	margin: 0px;
+	width: 2190px;
+	float: left;
+	left: 0px;
+}
+
+.featureBox {
+	width: 730px;
+	float: left;
+	overflow: hidden;
+	padding-top: 10px;
+}
+
+.black {
+	z-index: 0;
+	position: relative;
+	margin: 0px auto;
+	width: 730px;
+	height: 510px;
+	overflow: hidden;
+}
+
+.h320 {
+	height: 320px;
+}
+
+.h420 {
+	height: 420px;
+}
+
+.h450 {
+	height: 450px;
+}
+
+.h650 {
+	height: 650px;
+}
+/*左右滚动条结束*/
+.StabedPanels {
+	overflow: hidden;
+}
+
+.Stab {
+	width: 256px;
+	height: 38px;
+	line-height: 38px;
+	float: left;
+	border: 1px solid #ddd;
+	/* 	border-right:none; */
+	text-align: center;
+	color: #000;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.Ctab {
+	width: 250px;
+}
+
+.Ctab1 {
+	width: 378px;
+}
+
+.Vtab {
+	width: 158px;
+}
+
+.Ptab {
+	width: 158px;
+}
+
+.StabSeleted {
+	border-top: 3px solid #008cd6;
+}
+
+.lastLi {
+	border-right: 1px solid #ddd;
+}
+
+.StabContent {
+	display: none;
+	margin-top: 25px;
+}
+
+.CtabContent {
+	margin-top: 0;
+}
+
+.ScontentSelected {
+	display: block;
+}
+/*选项卡开始*/
+
+/*选项卡结束*/

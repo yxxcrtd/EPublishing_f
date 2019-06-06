@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="daoFacade" class="cn.digitalpublishing.facade.DaoFacade">
+		<!-- 
+		<property name="tProductDao">
+			<bean class="cn.digitalpublishing.dao.TProductDao"
+				parent="commonDao" />
+		</property>
+		-->
+		<property name="resourcesSumDao">
+			<bean class="cn.digitalpublishing.dao.ResourcesSumDao"
+				parent="commonDao" />
+		</property>
+		<property name="recommendDao">
+			<bean class="cn.digitalpublishing.dao.RecommendDao"
+				parent="commonDao" />
+		</property>
+		<property name="bConfigurationDao">
+			<bean class="cn.digitalpublishing.dao.BConfigurationDao"
+				parent="commonDao" />
+		</property>
+		<property name="bInstitutionDao">
+			<bean class="cn.digitalpublishing.dao.BInstitutionDao"
+				parent="commonDao" />
+		</property>
+		<property name="bIpRangeDao">
+			<bean class="cn.digitalpublishing.dao.BIpRangeDao"
+				parent="commonDao" />
+		</property>
+		<property name="bLanguageDao">
+			<bean class="cn.digitalpublishing.dao.BLanguageDao"
+				parent="commonDao" />
+		</property>
+		<property name="bSubjectDao">
+			<bean class="cn.digitalpublishing.dao.BSubjectDao"
+				parent="commonDao" />
+		</property>
+		<property name="cFavouritesDao">
+			<bean class="cn.digitalpublishing.dao.CFavouritesDao"
+				parent="commonDao" />
+		</property>
+		<property name="cAccountDao">
+			<bean class="cn.digitalpublishing.dao.CAccountDao"
+				parent="commonDao" />
+		</property>
+		<property name="cUserDao">
+			<bean class="cn.digitalpublishing.dao.CUserDao"
+				parent="commonDao" />
+		</property>
+		<property name="cUserPropDao">
+			<bean class="cn.digitalpublishing.dao.CUserPropDao"
+				parent="commonDao" />
+		</property>
+		<property name="cUserTypeDao">
+			<bean class="cn.digitalpublishing.dao.CUserTypeDao"
+				parent="commonDao" />
+		</property>
+		<property name="cUserTypePropDao">
+			<bean class="cn.digitalpublishing.dao.CUserTypePropDao"
+				parent="commonDao" />
+		</property>
+		<property name="oCurrencyDao">
+			<bean class="cn.digitalpublishing.dao.OCurrencyDao"
+				parent="commonDao" />
+		</property>
+		<property name="oExchangeDao">
+			<bean class="cn.digitalpublishing.dao.OExchangeDao"
+				parent="commonDao" />
+		</property>
+		<property name="oOrderDao">
+			<bean class="cn.digitalpublishing.dao.OOrderDao"
+				parent="commonDao" />
+		</property>
+		<property name="oOrderDetailDao">
+			<bean class="cn.digitalpublishing.dao.OOrderDetailDao"
+				parent="commonDao" />
+		</property>
+		<property name="pCcRelationDao">
+			<bean class="cn.digitalpublishing.dao.PCcRelationDao"
+				parent="commonDao" />
+		</property>
+		<property name="pCollectionDao">
+			<bean class="cn.digitalpublishing.dao.PCollectionDao"
+				parent="commonDao" />
+		</property>
+		<property name="pCsRelationDao">
+			<bean class="cn.digitalpublishing.dao.PCsRelationDao"
+				parent="commonDao" />
+		</property>
+		<property name="pNoteDao">
+			<bean class="cn.digitalpublishing.dao.PNoteDao"
+				parent="commonDao" />
+		</property>
+		<property name="pPageDao">
+			<bean class="cn.digitalpublishing.dao.PPageDao"
+				parent="commonDao" />
+		</property>
+		<property name="pPriceDao">
+			<bean class="cn.digitalpublishing.dao.PPriceDao"
+				parent="commonDao" />
+		</property>
+		<property name="pPriceTypeDao">
+			<bean class="cn.digitalpublishing.dao.PPriceTypeDao"
+				parent="commonDao" />
+		</property>
+		<property name="pPublicationsDao">
+			<bean class="cn.digitalpublishing.dao.PPublicationsDao"
+				parent="commonDao" />
+		</property>
+		<property name="pRecordDao">
+			<bean class="cn.digitalpublishing.dao.PRecordDao"
+				parent="commonDao" />
+		</property>
+		<property name="rRecommendDao">
+			<bean class="cn.digitalpublishing.dao.RRecommendDao"
+				parent="commonDao" />
+		</property>
+		<property name="rRecommendDetailDao">
+			<bean class="cn.digitalpublishing.dao.RRecommendDetailDao"
+				parent="commonDao" />
+		</property>
+		<property name="lLicenseDao">
+			<bean class="cn.digitalpublishing.dao.LLicenseDao"
+				parent="commonDao" />
+		</property>
+		<property name="lLicenseIpDao">
+			<bean class="cn.digitalpublishing.dao.LLicenseIpDao"
+				parent="commonDao" />
+		</property>
+		<property name="bPublisherDao">
+			<bean class="cn.digitalpublishing.dao.BPublisherDao"
+				parent="commonDao" />
+		</property>
+		<property name="cUserAlertsDao">
+			<bean class="cn.digitalpublishing.dao.CUserAlertsDao"
+				parent="commonDao" />
+		</property>
+		<property name="oTransationDao">
+			<bean class="cn.digitalpublishing.dao.OTransationDao"
+				parent="commonDao" />
+		</property>
+		<property name="alertsWaitingQueueDao">
+			<bean class="cn.digitalpublishing.dao.CAlertsWaitingQueueDao"
+				parent="commonDao" />
+		</property>
+		<property name="alertsSendedQueueDao">
+			<bean class="cn.digitalpublishing.dao.CAlertsSendedQueueDao"
+				parent="commonDao" />
+		</property>
+		<property name="cDirectoryDao">
+			<bean class="cn.digitalpublishing.dao.CDirectoryDao"
+				parent="commonDao" />
+		</property>
+		<property name="cSearchHisDao">
+			<bean class="cn.digitalpublishing.dao.CSearchHisDao"
+				parent="commonDao" />
+		</property>
+		<property name="mMarkDataDao">
+			<bean class="cn.digitalpublishing.dao.MMarkDataDao"
+				parent="commonDao" />
+		</property>
+		<property name="lAccessDao">
+			<bean class="cn.digitalpublishing.dao.LAccessDao"
+				parent="commonDao" />
+		</property>
+		<property name="PriceTypeDao">
+			<bean class="cn.digitalpublishing.dao.PriceTypeDao"
+				parent="commonDao" />
+		</property>
+		<property name="lComplicatingDao">
+			<bean class="cn.digitalpublishing.dao.LComplicatingDao"
+				parent="commonDao" />
+		</property>
+		<property name="lUserAlertsLogDao">
+			<bean class="cn.digitalpublishing.dao.LUserAlertsLogDao"
+				parent="commonDao" />
+		</property>		
+		<property name="upRelationDao">
+			<bean class="cn.digitalpublishing.dao.UPRelationDao" parent="commonDao"/>
+		</property>
+		
+		<property name="sOnsaleDao">
+			<bean class="cn.digitalpublishing.dao.SOnsaleDao" parent="commonDao"/>
+		</property>
+		
+		<property name="uPaymentDao">
+			<bean class="cn.digitalpublishing.dao.UPaymentDao" parent="commonDao"/>
+		</property>
+		
+		<property name="uuRelationDao">
+			<bean class="cn.digitalpublishing.dao.BUuRelationDao" parent="commonDao"/>
+		</property>
+		
+		<property name="urlDao">
+			<bean class="cn.digitalpublishing.dao.BUrlDao" parent="commonDao"/>
+		</property>
+		
+		<property name="bPDACounterDao">
+			<bean class="cn.digitalpublishing.dao.BPDACounterDao" parent="commonDao"/>
+		</property>
+		
+		<property name="bPDAInfoDao">
+			<bean class="cn.digitalpublishing.dao.BPDAInfoDao" parent="commonDao"/>
+		</property>
+		<property name="pPublicationsRelationDao">
+			<bean class="cn.digitalpublishing.dao.PPublicationsRelationDao" parent="commonDao"/>
+		</property>
+	    <property name="oAdvertisementDao">
+			<bean class="cn.digitalpublishing.dao.OAdvertisementDao" parent="commonDao"/>
+		</property>
+		<property name="bServiceDao">
+			<bean class="cn.digitalpublishing.dao.BServiceDao" parent="commonDao"/>
+		</property>
+	    <property name="pNewsDao">
+			<bean class="cn.digitalpublishing.dao.PNewsDao" parent="commonDao"/>
+		</property>
+	    <property name="pRelatedPublisherDao">
+			<bean class="cn.digitalpublishing.dao.PRelatedPublisherDao" parent="commonDao"/>
+		</property>
+		<property name="suppDao">
+			<bean class="cn.digitalpublishing.dao.SSupplierDao" parent="commonDao"/>
+		</property>
+		<property name="pContentRelationDao">
+			<bean class="cn.digitalpublishing.dao.PContentRelationDao" parent="commonDao"/>
+		</property>
+		<property name="bTokenDao">
+			<bean class="cn.digitalpublishing.dao.BTokenDao" parent="commonDao"/>
+		</property>
+	</bean>
+
+</beans>

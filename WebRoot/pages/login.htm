@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国图书进出口集团</title>
+<link href="css/login.css" rel="stylesheet" type="text/css" />
+<link href="css/soChange.css" rel="stylesheet" type="text/css" />
+<link href="css/github.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+<script type="text/javascript" src="js/slider.js"></script>
+<SCRIPT type="text/javascript" src="js/frameworks.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="js/github.js"></SCRIPT>
+<script type="text/javascript">
+
+            //得到焦点触发事件
+
+         function OnfocusFun(element,elementvalue)
+
+{
+
+    if(element.value==elementvalue)
+
+    {
+
+        element.value="";
+
+        element.style.color="#000";
+
+    }
+
+}
+
+ 
+
+//离开输入框触发事件
+
+function OnBlurFun(element,elementvalue)
+
+{
+
+    if(element.value==""||element.value.replace(/\s/g,"")=="")
+
+    {
+
+        element.value=elementvalue;
+
+        element.style.color="#999";
+
+    }
+
+}
+
+        </script>
+</head>
+
+<body>
+<div id="logo"><a href="#"><img src="images/logo.jpg" width="432" height="44" /></a></div>
+<div class="topBg">
+<div class="loginDiv">
+<div class="content_right">
+  <div class="ad" >
+    <ul class="slider" >
+      <li><a href="#"><img src="images/buttom_0.jpg"/></a></li>
+      <li><a href="#"><img src="images/buttom_1.jpg"/></a></li>
+      <li><a href="#"><img src="images/buttom_2.jpg"/></a></li>
+      <li><a href="3"><img src="images/buttom_3.jpg"/></a></li>
+    </ul>
+    <ul class="num" >
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </div>
+</div>
+<FORM class="home-signup" accept-charset="UTF-8" method="post" action="/users" 
+autocomplete="off">
+<DIV style="margin: 0px; padding: 0px; display: inline;"></DIV>
+<DL class="form">
+  <DD><input type="text" value="Pick a username" id="UserId" onfocus="OnfocusFun(this,'Pick a username')" style="color:#999" onblur="OnBlurFun(this,'Pick a username')" class="textfield"/></DD></DL>
+<DL class="form">
+  <DD><input type="text" value="Your email" id="Password" onfocus="OnfocusFun(this,'Your email')" onblur="OnBlurFun(this,'Your email')" style="color:#999" class="textfield"/></DD></DL>
+<DL class="form">
+  <DD><input type="text" value="Creat a password" id="Password" onfocus="OnfocusFun(this,'Creat a password')" onblur="OnBlurFun(this,'Creat a password')" style="color:#999" class="textfield"/>
+  <P class="note">Tip: use at least one number and at least 7 
+  characters.</P></DD></DL>
+<P class="signup-agreement">            By clicking on "Sign up for free" below, 
+you agree to the            <A href="http://help.github.com/terms" target="_blank">Terms 
+of Service</A> and the            <A href="http://help.github.com/privacy" 
+target="_blank">Privacy Policy</A>.          </P>
+<BUTTON class="login_btn" type="submit">Sign up for free</BUTTON>
+<P class="plans"><A href="https://github.com/plans">See plans and 
+pricing</A></P></FORM>
+<div class="cls"></div>
+</div>
+</div>
+<DIV class="container">
+<DIV class="teasers">
+<DIV class="teaser"><IMG class="teaser-illustration" alt="Communicate" src="images/communicate.png" 
+width="225" height="100">
+<H3>Great collaboration starts with communication.</H3>
+<P>Review changes, comment on lines of code, report issues, and plan the future 
+of your project with <A href="http://github.com/features">flexible discussion 
+tools</A>.</P></DIV>
+<DIV class="teaser"><IMG class="teaser-illustration" alt="Devices" src="images/devices.png" 
+width="225" height="100">
+<H3>Manage and contribute from all your devices.</H3>
+<P>Native clients for <A href="http://mac.github.com/">Mac</A>, <A href="http://windows.github.com/">Windows</A>, 
+and <A href="http://mobile.github.com/">mobile</A> devices allow you to stay 
+involved with your projects from anywhere.</P></DIV>
+<DIV class="teaser"><IMG class="teaser-illustration" alt="Network" src="images/network.png" 
+width="225" height="100">
+<H3>The world’s largest open source community.</H3>
+<P>Share your code with the world and contribute to <A href="http://github.com/explore">the 
+millions of public repositories</A> hosted on GitHub.</P></DIV></DIV>
+<P class="plans-pricing-callout"><SPAN 
+class="mega-icon mega-icon-private-repo"></SPAN>      Collaborate on private 
+repositories when you <A href="https://github.com/plans">sign up for a paid 
+individual or organization plan</A>.    </P></DIV>
+
+
+<DIV id="footer">
+<DIV class="container clearfix">
+<DL class="footer_nav">
+  <DT>GitHub</DT>
+  <DD><A href="https://github.com/about">About us</A></DD>
+  <DD><A href="https://github.com/blog">Blog</A></DD>
+  <DD><A href="https://github.com/contact">Contact &amp; support</A></DD>
+  <DD><A href="http://enterprise.github.com/">GitHub Enterprise</A></DD>
+  <DD><A href="http://status.github.com/">Site status</A></DD></DL>
+<DL class="footer_nav">
+  <DT>Applications</DT>
+  <DD><A href="http://mac.github.com/">GitHub for Mac</A></DD>
+  <DD><A href="http://windows.github.com/">GitHub for Windows</A></DD>
+  <DD><A href="http://eclipse.github.com/">GitHub for Eclipse</A></DD>
+  <DD><A href="http://mobile.github.com/">GitHub mobile apps</A></DD></DL>
+<DL class="footer_nav">
+  <DT>Services</DT>
+  <DD><A href="http://get.gaug.es/">Gauges: Web analytics</A></DD>
+  <DD><A href="http://speakerdeck.com/">Speaker Deck: Presentations</A></DD>
+  <DD><A href="https://gist.github.com/">Gist: Code snippets</A></DD>
+  <DD><A href="http://jobs.github.com/">Job board</A></DD></DL>
+<DL class="footer_nav">
+  <DT>Documentation</DT>
+  <DD><A href="http://help.github.com/">GitHub Help</A></DD>
+  <DD><A href="http://developer.github.com/">Developer API</A></DD>
+  <DD><A href="http://github.github.com/github-flavored-markdown/">GitHub 
+  Flavored Markdown</A></DD>
+  <DD><A href="http://pages.github.com/">GitHub Pages</A></DD></DL>
+<DL class="footer_nav">
+  <DT>More</DT>
+  <DD><A href="http://training.github.com/">Training</A></DD>
+  <DD><A href="https://github.com/edu">Students &amp; teachers</A></DD>
+  <DD><A href="http://shop.github.com/">The Shop</A></DD>
+  <DD><A href="https://github.com/plans">Plans &amp; pricing</A></DD>
+  <DD><A href="http://octodex.github.com/">The Octodex</A></DD></DL>
+<HR class="footer-divider">
+
+<P class="right">© 2013 <SPAN 
+title="0.01001s from fe4.rs.github.com">GitHub</SPAN>, Inc. All rights 
+reserved.</P>
+<UL id="legal">
+  <LI><A href="https://github.com/site/terms">Terms of Service</A></LI>
+  <LI><A href="https://github.com/site/privacy">Privacy</A></LI>
+  <LI><A href="https://github.com/security">Security</A></LI></UL></DIV><!-- /.container --></DIV>
+  
+
+
+</body>
+</html>

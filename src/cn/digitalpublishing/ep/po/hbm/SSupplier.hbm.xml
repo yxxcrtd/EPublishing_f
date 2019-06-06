@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.ep.po.SSupplier" table="EPUB_S_SUPPLIER">
+		<id name="id" type="java.lang.String">
+			<column name="SUPP_ID" length="32" />
+			<generator class="uuid.hex" />
+		</id>
+		
+		<property name="institutionid" type="java.lang.String">
+			<column name="SUPP_INSTITUTION_ID" length="32">
+				<comment>机构ID</comment>
+			</column>
+		</property>
+		
+		<property name="pubId" type="java.lang.String">
+			<column name="SUPP_PUB_ID" length="32">
+				<comment>出版物ID</comment>
+			</column>
+		</property>
+			<property name="lang" type="java.lang.String">
+			<column name="SUPP_LANG" length="128">
+				<comment>出版物语言</comment>
+			</column>
+		</property>
+		
+		<property name="title" type="java.lang.String">
+		<column name="SUPP_TITLE" length="1024">
+				<comment>出版物标题</comment>
+			</column>
+		</property>
+		
+		<property name="type" type="java.lang.Integer">
+			<column name="SUPP_TYPE">
+				<comment>出版物类型 1-图书 2-期刊 3-章节 4-文章</comment>
+			</column>
+		</property>
+		<property name="author" type="java.lang.String">
+		<column name="SUPP_AUTHOR" length="1024">
+				<comment>出版物作者</comment>
+			</column>
+		</property>
+		<property name="isbn" type="java.lang.String">
+		<column name="SUPP_ISBN" length="64">
+				<comment>ISBN</comment>
+			</column>
+		</property>
+		<property name="issn" type="java.lang.String">
+		<column name="SUPP_ISSN" length="64">
+				<comment>ISSN</comment>
+			</column>
+		</property>
+			<property name="eissn" type="java.lang.String">
+		<column name="SUPP_EISSN" length="64">
+				<comment>eISSN</comment>
+			</column>
+		</property>
+		<property name="pubName" type="java.lang.String">
+		<column name="SUPP_PUBLISHER_NAME" length="128">
+				<comment>出版商名称</comment>
+			</column>
+		</property>
+		
+		<property name="sdate" type="java.lang.String">
+			<column name="SUPP_SDATE" length="64">
+				<comment>日期：Date(YYYY-MM)</comment>
+			</column>
+		</property>
+		<property name="year" type="java.lang.Integer">
+			<column name="SUPP_YEAR">
+				<comment>年(YYYY)</comment>
+			</column>
+		</property>
+		<property name="month" type="java.lang.Integer">
+			<column name="SUPP_MONTH">
+				<comment>月(MM)</comment>
+			</column>
+		</property>
+		<property name="platform" type="java.lang.String">
+		<column name="SUPP_PLATFORM" length="128">
+				<comment>平台名称（CNPe）</comment>
+			</column>
+		</property>
+		<property name="fullAccess" type="java.lang.Integer">
+			<column name="SUPP_FULL_ACCESS">
+				<comment>全文访问（月）统计总数</comment>
+			</column>
+		</property>
+		<property name="fullRefused" type="java.lang.Integer">
+			<column name="SUPP_FULL_REFUSED">
+				<comment>全文拒访（月）统计总数</comment>
+			</column>
+		</property>
+		<property name="refusedLicense" type="java.lang.Integer">
+			<column name="SUPP_REFUSED_LICENSE">
+				<comment>全文访问没有license（月）统计总数</comment>
+			</column>
+		</property>
+		<property name="refusedConcurrent" type="java.lang.Integer">
+			<column name="SUPP_REFUSED_CONCURRENT">
+				<comment>全文访问超并发数（月）统计总数</comment>
+			</column>
+		</property>
+		<property name="search" type="java.lang.Integer">
+			<column name="SUPP_SEARCH">
+				<comment>搜索（月）统计总数</comment>
+			</column>
+		</property>
+		<property name="searchStandard" type="java.lang.Integer">
+			<column name="SUPP_SEARCH_STANDARD">
+				<comment>搜索（标准搜索）（月）统计总数</comment>
+			</column>
+		</property>
+		<property name="searchFederal" type="java.lang.Integer">
+			<column name="SUPP_SEARCH_FEDERAL">
+				<comment>搜索（联邦搜索）（月）统计总数</comment>
+			</column>
+		</property>
+		<property name="toc" type="java.lang.Integer">
+			<column name="SUPP_TOC">
+				<comment>TOC访问（月）统计总数</comment>
+			</column>
+		</property>
+		<property name="download" type="java.lang.Integer">
+			<column name="SUPP_DOWNLOAD">
+				<comment>下载(月)统计总数</comment>
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

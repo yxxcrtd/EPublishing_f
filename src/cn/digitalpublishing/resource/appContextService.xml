@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- 
+	<bean id="ereadingService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.EreadingServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	-->
+<bean id="resourcesSumService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.ResourcesSumServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="configureService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.ConfigureServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+
+	<bean id="bSubjectService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.BSubjectServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="pPublicationsService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.PPublicationsServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+
+	<bean id="pRecordService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.PRecordServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="pNoteService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.PNoteServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	
+	<bean id="customService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CustomServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="cUserService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CUserServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="oOrderService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.OOrderServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="rRecommendService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.RRecommendServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>	
+	<bean id="timeTaskService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.TimeTaskServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="logAOPService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.LogAOPServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+
+	<bean id="cUserPropService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CUserPropServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="cUserTypeService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CUserTypeServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	
+	<bean id="cUserTypePropService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CUserTypePropServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="cAccountService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CAccountServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+
+	<bean id="statisticService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.StatisticServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="oAdvertisementService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.OAdvertisementServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="bServiceService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.BServiceServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="newsService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.NewsServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="pRelatedPublisherService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.PRelatedPublisherServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	<bean id="bookSuppliersService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.StatisticsBookSuppliersImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	
+	<bean id="bookDao" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.redis.dao.impl.BookDaoImpl" />
+		</property>
+	</bean>
+</beans>

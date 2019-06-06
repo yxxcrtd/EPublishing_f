@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+     
+    <!--负责记录有异常发生时的信息-->
+    <bean id="exceptionHandler" class="cn.com.daxtech.framework.aop.ExceptionHandler"/>
+    <bean id="exceptionHandlereAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"> 
+        <property name="advice"> 
+            <ref bean="exceptionHandler"/> 
+        </property> 
+        <!--对指定类的任何方法有效-->
+        <property name="patterns"> 
+            <value>.*.*</value> 
+        </property> 
+  	</bean>
+  	
+  	<!--负责记录方法的运行时间-->
+  	<bean id="timeHandler" class="cn.com.daxtech.framework.aop.TimeHandler"/>
+  	<bean id="timeHandlerAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"> 
+        <property name="advice"> 
+            <ref bean="timeHandler"/> 
+        </property>
+        <!--对指定类的任何方法有效-->
+        <property name="patterns"> 
+            <value>.*.*</value> 
+        </property> 
+    </bean>
+    
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames">
+            <list>
+                <value>configureService</value>
+                <value>bSubjectService</value>
+                <value>pPublicationsService</value>
+                <value>pRecordService</value>
+                <value>pNoteService</value>
+                <value>customService</value>
+                <value>cUserService</value>
+                <value>oOrderService</value>
+                <value>rRecommendService</value>
+                <value>timeTaskService</value>
+                <value>logAOPService</value>
+            </list>
+     	</property>
+        
+		<!--指定代理类-->
+        <property name="interceptorNames">
+            <list>
+                <value>exceptionHandlereAdvisor</value>
+                <!-- <value>timeHandlerAdvisor</value> -->
+            </list>
+        </property>
+    </bean>
+</beans>

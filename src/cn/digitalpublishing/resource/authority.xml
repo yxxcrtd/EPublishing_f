@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Authority>
+	<space namespace="/pages/user/form/myaccount">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>	
+	<space namespace="/pages/user/form/myrecommend">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/user/form/detailSubmit">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/user/form/myaccount">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/user/form/userManage">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/user/form/resetPwdByAdmin">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/user/form/mySubscription">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/user/form/mySubscription">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/expertUser">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/orgUser">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/user/form/logo">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/user/form/uploadSubmit">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/user/form/uploadSubmit">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/favourites">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+	<space namespace="/pages/order/form">
+		<item name="mainUser" url="/pages/redirect.jsp" regular="NotNull" equal="" description="Prompt.Login.failure.No.Access;Prompt.Login.failure.No.Access.Detail"/>
+	</space>
+</Authority>

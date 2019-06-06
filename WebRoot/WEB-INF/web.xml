@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<!-- 编码Filter 加载配置 Start -->
+	<filter>
+		<filter-name>SetCharacterEncoding</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SetCharacterEncoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 编码Filter 加载配置 End -->
+	
+	<!-- AccessFilter 加载配置 Start -->
+	<filter>
+	    <filter-name>AccessFilter</filter-name>
+	    <filter-class>cn.com.daxtech.framework.web.filter.AccessFilter</filter-class>
+  	</filter>
+	<filter-mapping>
+		<filter-name>AccessFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- AccessFilter 加载配置 End -->
+	
+	<!-- Spring 配置文件加载 Start -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/classes/cn/digitalpublishing/resource/appContext*.xml
+		</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	<!-- Spring 配置文件加载 End -->
+	
+	<!-- 服务接口加载 Start -->
+	<servlet>
+		<servlet-name>InitInterface</servlet-name>
+		<servlet-class>
+			cn.digitalpublishing.servlet.InitInterface
+		</servlet-class>
+		<init-param>
+			<param-name>interfaceService</param-name>
+			<param-value>rest</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitInterface</servlet-name>
+		<url-pattern>/InitInterface</url-pattern>
+	</servlet-mapping>
+	<!-- 服务接口加载 End -->
+	
+	<!-- 参数加载 Start -->
+	<servlet>
+		<servlet-name>InitParam</servlet-name>
+		<servlet-class>
+			cn.com.daxtech.framework.web.init.ParamConfig
+		</servlet-class>
+		<init-param>
+			<param-name>Path</param-name>
+			<param-value>
+				/WEB-INF/classes/cn/digitalpublishing/resource/param.properties
+			</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitParam</servlet-name>
+		<url-pattern>/InitParam</url-pattern>
+	</servlet-mapping>
+	<!-- 参数加载 End -->
+	
+	<!-- Services 加载配置 Start -->
+	<servlet>
+		<servlet-name>InitService</servlet-name>
+		<servlet-class>cn.com.daxtech.framework.web.init.InitServiceConfig</servlet-class>
+		<init-param>
+      		<param-name>services</param-name>
+      		<param-value>/WEB-INF/classes/cn/digitalpublishing/resource/service.properties</param-value>
+    	</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitService</servlet-name>
+		<url-pattern>/InitService</url-pattern>
+	</servlet-mapping>
+	<!-- Services 加载配置 End -->
+	
+	<!-- Log4j 加载配置 Start -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/classes/cn/digitalpublishing/resource/log4j.properties
+		</param-value>
+	</context-param>
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>6000</param-value>
+	</context-param>
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>EPublishing</param-value>
+	</context-param>
+	<listener>
+		<listener-class>
+			org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+	</listener>
+	<!-- Log4j 加载配置 End -->
+	
+	<!-- i18n Start -->
+	<servlet>
+		<servlet-name>i18n</servlet-name>
+		<servlet-class>cn.com.daxtech.framework.Internationalization.LangConfig</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/classes/cn/digitalpublishing/resource/i18n.properties</param-value>
+		</init-param>
+		<init-param>
+			<param-name>default</param-name>
+			<param-value>default</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>i18n</servlet-name>
+		<url-pattern>/i18n</url-pattern>
+	</servlet-mapping>
+	<!-- i18n End -->
+	
+	<!-- Authority 加载配置 Start -->
+	<servlet>
+		<servlet-name>Authority</servlet-name>
+		<servlet-class>cn.com.daxtech.framework.web.init.InitAuthority</servlet-class>
+		<init-param>
+      		<param-name>initconfig</param-name>
+      		<param-value>/WEB-INF/classes/cn/digitalpublishing/resource/authority.xml</param-value>
+    	</init-param>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Authority</servlet-name>
+		<url-pattern>/Authority</url-pattern>
+	</servlet-mapping> 
+	<!-- Authority 加载配置 End -->
+	
+	<!-- CommonUpload Start -->
+	<servlet>
+		<servlet-name>commonUpload</servlet-name>
+		<servlet-class>cn.digitalpublishing.servlet.CommonUpload</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>commonUpload</servlet-name>
+		<url-pattern>/commonUpload</url-pattern>
+	</servlet-mapping>
+	<!-- CommonUpload End -->
+	
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				/WEB-INF/classes/cn/digitalpublishing/resource/mvc-config.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>*.json</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>*.xml</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.cur</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.swf</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.xls</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.rar</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.zip</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.gif</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.jpg</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.png</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.ico</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.js</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>default</servlet-name>
+	    <url-pattern>/epubReaderDemo/*</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+	    <servlet-name>default</servlet-name>
+	    <url-pattern>/epub/*</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/FCKeditor/fckstyles.xml</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index</welcome-file>
+	</welcome-file-list>
+	
+	<jsp-config>
+		<taglib>
+			<taglib-uri>daxtech-taglib.tld</taglib-uri>
+			<taglib-location>
+				/WEB-INF/taglib/daxtech-taglib.tld
+			</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>zhima-taglib.tld</taglib-uri>
+			<taglib-location>
+				/WEB-INF/taglib/zhima-taglib.tld
+			</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>ingenta-taglib.tld</taglib-uri>
+			<taglib-location>
+				/WEB-INF/taglib/ingenta-taglib.tld
+			</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>ingenta-pagination-v3.tld</taglib-uri>
+			<taglib-location>
+				/WEB-INF/taglib/ingenta-pagination-v3.tld
+			</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>ingenta-pagination-v2.tld</taglib-uri>
+			<taglib-location>
+				/WEB-INF/taglib/ingenta-pagination-v2.tld
+			</taglib-location>
+		</taglib>
+		
+	</jsp-config>
+	<!-- 语言Filter start -->
+	<filter>
+		<filter-name>LanguageFilter</filter-name>
+		<filter-class>
+			cn.digitalpublishing.filter.LanguageFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LanguageFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<!-- 语言Filter end -->
+	<!-- 用户Filter start -->
+	<filter>
+		<filter-name>UserFilter</filter-name>
+		<filter-class>
+			cn.digitalpublishing.filter.UserFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UserFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<!-- 用户Filter end -->
+	
+	<!-- XSS Filter start -->
+	<filter>
+		<filter-name>XSSFilter</filter-name>
+		<filter-class>
+			cn.digitalpublishing.filter.XSSFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>XSSFilter</filter-name>
+		<url-pattern>/pages/*</url-pattern>
+	</filter-mapping>
+	<!-- XSS Filter end -->
+	<!-- 访问并发Filter start -->
+	<filter>
+		<filter-name>ComplicatingFilter</filter-name>
+		<filter-class>
+			cn.digitalpublishing.filter.ComplicatingFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ComplicatingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<!-- 访问并发Filter end -->
+	<!-- 访问并发Filter start -->
+	<filter>
+		<filter-name>UserAccessFilter</filter-name>
+		<filter-class>
+			cn.digitalpublishing.filter.UserAccessFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UserAccessFilter</filter-name>
+		<url-pattern>/pages/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<!-- 访问并发Filter end -->
+	
+	<!-- Session 监听处理start -->
+	<listener>
+		<listener-class>
+			cn.digitalpublishing.listener.SessionListener
+		</listener-class>
+	</listener>
+	<!-- Session 监听处理end -->
+	
+	<!-- 资源访问权限 加载 Start -->
+	<servlet>
+		<servlet-name>AccessResource</servlet-name>
+		<servlet-class>cn.digitalpublishing.servlet.InitAccessResource</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AccessResource</servlet-name>
+		<url-pattern>/AccessResource</url-pattern>
+	</servlet-mapping>
+	<!-- 资源访问权限 加载配置 End -->
+</web-app>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- the proxool configuration can be embedded within your own application's.
+Anything outside the "proxool" tag is ignored. -->
+<something-else-entirely>
+	<proxool>
+	    <alias>EPublishing-pool</alias>
+	    <!-- 
+	    <driver-url>jdbc:mysql://127.0.0.1:3306/EPublishing?characterEncoding=UTF-8</driver-url>
+	    <driver-class>com.mysql.jdbc.Driver</driver-class>
+	    
+	    <driver-properties>
+	      <property name="user" value="root"/>
+	      <property name="password" value="root"/>
+	    </driver-properties>  -->
+	     
+	    <!-- <driver-url>jdbc:oracle:thin:@192.168.10.30:1521:cnpe</driver-url>
+	    <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+	    
+	    <driver-properties>
+	      <property name="user" value="CNPe"/>
+	      <property name="password" value="CNPe2013"/>
+	    </driver-properties> --> 
+	   
+	   	<driver-url>jdbc:oracle:thin:@192.168.10.30:1521:cnpe</driver-url>
+	    <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+	    
+	    <driver-properties>
+	      <property name="user" value="CNPe"/>
+	      <property name="password" value="cnpe2013"/>
+	    </driver-properties> 
+	   
+	    <maximum-connection-count>1000</maximum-connection-count>
+	    <minimum-connection-count>100</minimum-connection-count>
+	    <house-keeping-sleep-time>90000</house-keeping-sleep-time>
+	    <maximum-new-connections>100</maximum-new-connections>
+	    <maximum-active-time>7200000</maximum-active-time>
+	    <prototype-count>50</prototype-count>
+	    <test-before-use>true</test-before-use>
+	    <house-keeping-test-sql>select 1 from dual </house-keeping-test-sql>
+  	</proxool>
+</something-else-entirely>
+

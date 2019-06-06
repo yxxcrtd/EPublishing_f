@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- solr client -->
+	<!-- 实现类HttpSolrServer 集群配置成CloudSolrServer	 -->
+	<bean id="solrClient" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+		<constructor-arg index="0" value="http://demo.cnpereading.com:8080/solr/collection1" />
+	</bean>
+	
+	<bean id="solrFullTextClient" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+		 <constructor-arg index="0" value="http://192.168.10.53:8080/solr410/SolrFulltext" /> 
+<!-- 			<constructor-arg index="0" value="http://192.168.10.53:8080/solr/collection8" /> -->
+	</bean>
+	
+	<bean id="publicationsIndexService" class="cn.digitalpublishing.search.impl.SolrPublicationsIndexService">
+		<property name="solrClient" ref="solrFullTextClient"/>
+	</bean>
+	
+	<!-- solr client -->
+	<!-- 实现类HttpSolrServer 集群配置成CloudSolrServer	 -->
+	<bean id="solrClientLicense" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+		<constructor-arg index="0" value="http://demo.cnpereading.com:8080/solr/collection2" />
+	</bean>
+	
+	<bean id="solrClientFulltextLicense" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+		 <constructor-arg index="0" value="http://192.168.10.53:8080/solr410/SolrSubscribe" />
+<!-- 			<constructor-arg index="0" value="http://192.168.10.53:8080/solr/collection9" /> -->
+	</bean>
+	
+	<bean id="licenseIndexService" class="cn.digitalpublishing.search.impl.SolrLicenseIndexService">
+		<property name="solrClient" ref="solrClientFulltextLicense"/>
+	</bean>
+	<!-- solr client -->
+	<!-- 实现类HttpSolrServer 集群配置成CloudSolrServer	 -->
+	<bean id="solrClientPages" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+		<constructor-arg index="0" value="http://192.168.10.62:8080/solr/collection7" />
+	</bean>
+	
+	<bean id="pagesIndexService" class="cn.digitalpublishing.search.impl.SolrPagesIndexService">
+		<property name="solrClient" ref="solrClientPages"/>
+	</bean>
+
+</beans>

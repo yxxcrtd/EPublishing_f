@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!--  
+		<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+	-->
+	<!-- 使用注释 Start -->
+	<!-- xml里面加上这个，然后注入的bean加上@Autowired -->
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	<!-- 使用注释 End -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:cn/digitalpublishing/resource/config.properties</value>
+		</property>
+	</bean>
+	<!--  
+		<bean id="dataSource"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="webgate"></property>
+		<property name="resourceRef" value="true"></property>
+		</bean>
+	-->
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+		scope="singleton">
+		<!-- 通过Xml配置数据源 -->
+		<!--  
+			<property name="configLocation">
+			<value>${configLocation}</value>
+			</property>
+		-->
+		<!-- 通过 JNDI 配置数据源 -->
+		<!--  
+			<property name="dataSource">
+			<ref bean="dataSource" />
+			</property>
+		-->
+		<property name="schemaUpdate">
+			<value>true</value>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.autoReconnect">
+					${hibernate.autoReconnect}
+				</prop>
+				<prop key="hibernate.dialect">${Dialect}</prop>
+				<!-- -->
+				<prop key="hibernate.hbm2ddl.auto">
+					${hibernate.hbm2ddl.auto}
+				</prop>
+				<!--1.Proxool配置 使用Proxool.xml配置 -->
+				<prop key="hibernate.proxool.pool_alias">
+					${hibernate.proxool.pool_alias}
+				</prop>
+				<prop key="hibernate.proxool.xml">
+					${hibernate.proxool.xml}
+				</prop>
+				<prop key="hibernate.connection.provider_class">
+					org.hibernate.connection.ProxoolConnectionProvider
+				</prop>
+
+				<!--2.Proxool配置 使用JNDI配置 不能和1.Proxool配置共用
+					<prop key="hibernate.proxool.existing_pool">${hibernate.proxool.existing_pool}</prop>
+				-->
+				<prop key="hibernate.show_sql">
+					${hibernate.show_sql}
+				</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.cache.provider_class">
+					${hibernate.cache.provider_class}
+				</prop>
+				<prop key="hibernate.cache.use_query_cache">
+					${hibernate.cache.use_query_cache}
+				</prop>
+				<prop key="hibernate.cache.use_second_level_cache">
+					${hibernate.cache.use_second_level_cache}
+				</prop>
+				<prop
+					key="hibernate.cache.provider_configuration_file_resource_path">
+					${hibernate.cache.provider_configuration_file_resource_path}
+				</prop>
+			</props>
+		</property>			
+		<property name="mappingDirectoryLocations">
+   			<list>
+   				<value>${mappingDirectoryLocations}</value>
+   			</list>
+   		</property>
+		<property name="cacheableMappingLocations">
+			<list>
+				<value>${cache.mapping.Locations}</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="hibernateDao" scope="singleton" class="cn.com.daxtech.framework.orm.hibernate3.dao.impl.HibernateDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="baseDao" scope="prototype" class="cn.digitalpublishing.dao.BaseDao">
+		<property name="hibernateDao">
+			<ref bean="hibernateDao" />
+		</property>
+	</bean>
+	
+	<bean id="commonDao" scope="singleton" class="cn.digitalpublishing.dao.CommonDao" parent="baseDao">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<bean id="baseService" class="cn.digitalpublishing.service.impl.BaseServiceImpl">
+		<property name="daoFacade">
+			<ref bean="daoFacade" />
+		</property>
+	</bean>
+	<bean id="transactionManager" scope="singleton"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="baseTxProxy" abstract="true" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" lazy-init="default" autowire="default" dependency-check="default">
+		<property name="transactionManager"><ref bean="transactionManager" /></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="create*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="get*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="retrieve*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 配置SpringMVC 国际化 Start -->
+
+	<!-- 基于Session的国际化配置-->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
+	<!-- 基于cookie的国际化配置-->
+	<!-- 
+		<bean id="cookieLocaleResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="en" />
+		</bean>
+	-->
+
+
+	<!-- 国际化操作 拦截器 必需配置，可以和其它国际化方式通用 -->
+	<bean id="localeChangeInterceptor"
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="language" />
+	</bean>
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="localeChangeInterceptor" />
+			</list>
+		</property>
+	</bean>
+	<!-- 资源文件绑定器 -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="message" />
+	</bean>
+	<!-- 配置SpringMVC 国际化 End   -->
+	<!-- 配置邮件服务 Start -->
+	<bean id="sendMail" class="com.zhima.server.util.mail.SendMail" >         
+		<constructor-arg value="http://192.168.10.28:8080/MailService/pages/waitingQueue/insertMailTask.xml" />   
+	</bean>
+	<!-- 配置邮件服务 End -->
+</beans>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    
+	<bean id="restService" class="cn.digitalpublishing.remote.service.RestService" >         
+		<constructor-arg>
+			<map>
+    			<entry key="alipaynotifyUpdate" value="http://127.0.0.1:8080/MetadataConverter/pages/order/alipaynotifyUpdate.xml" /><!-- 支付宝付款成功返回的支付宝账单号和付款信息 -->
+   			</map>
+		</constructor-arg>   
+	</bean>
+</beans>

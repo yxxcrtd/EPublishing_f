@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+            http://www.springframework.org/schema/context  
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+            http://www.springframework.org/schema/tx  
+            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+            http://www.springframework.org/schema/jdbc  
+            http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+            http://www.springframework.org/schema/mvc 
+            http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
+            >
+
+
+	<!-- 读取配置文件 -->
+	<bean id="propertyConfigurers" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:cn/digitalpublishing/resource/config.properties</value>
+		</property>
+	</bean>
+	
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		 <property name="messageConverters">
+		      <list>
+		        <bean id="UTF8StringHttpMessageConverter"
+		          class="cn.digitalpublishing.util.UTF8StringHttpMessageConverter">
+		        
+		        </bean>
+		      </list>
+    	</property>
+	</bean>
+		
+	<!-- 自动搜索@Controller标注的类 -->
+	<context:component-scan base-package="cn.digitalpublishing.springmvc.controller" />
+
+	<!-- 定义controller -->
+	
+	<!--根据 controller 返回的字符串 找到viewResolver -->
+	<bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="2"></property>
+	</bean>
+
+	<!-- 定义view的公共路径 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="1"></property>
+		<property name="prefix" value="/pages/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+
+	<!-- 根据客户端的不同的请求决定不同的view进行响应, 如 /blog/1.json /blog/1.xml -->
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<!-- 设置为true以忽略对Accept Header的支持-->
+		<property name="ignoreAcceptHeader" value="true" />
+		<!-- 在没有扩展名时即: "/user/1" 时的默认展现形式 -->
+		<property name="defaultContentType" value="text/html" />
+		<!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="application/xml" />
+			</map>
+		</property>
+		
+		<!-- 用于开启 /userinfo/123?format=json 的支持 -->
+		<property name="favorParameter" value="false" />
+		<property name="viewResolvers">
+			<list>
+				<ref bean="viewResolver" />
+				<ref bean="beanNameViewResolver" />
+				<ref bean="freeMarkerViewResolver" />
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<!-- for application/json -->
+				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+				<!-- for application/xml -->
+				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+					<constructor-arg>
+						<bean class="org.springframework.oxm.xstream.XStreamMarshaller" />
+					</constructor-arg>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 指定freemarker.properties文件的位置，默认无法读取src下的该文件 -->
+	<bean id="freemarkerConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location" value="classpath:cn/digitalpublishing/resource/freemarker.properties" />
+	</bean>
+	
+	<!-- Freemarker视图解析器 -->
+	<bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer" 
+		p:templateLoaderPaths="/pages/" 
+		p:defaultEncoding="UTF-8">
+		<property name="freemarkerSettings" ref="freemarkerConfiguration" />
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="xml_escape" value-ref="fmXmlEscape" />
+			</map>
+		</property>
+	</bean>
+	<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
+	
+	<!-- 视图解析的优先级，它将优先于默认的 InternalResourceViewResolver -->
+	<bean id="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver" 
+		p:cache="true"
+		p:order="0" 
+		p:contentType="text/html; charset=UTF-8" 
+		p:requestContextAttribute="request" />
+	
+	<!-- Configure the multipart resolver -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<property name="defaultEncoding" value="UTF-8"/>   
+		<property name="maxUploadSize" value="20971520"/> <!-- 20M -->
+		<!-- 要在WebContent下生成一个upload文件夹 
+		<property name="uploadTempDir" value="upload" />
+		 -->
+	</bean> 
+	
+	<mvc:interceptors >    
+		<mvc:interceptor>    
+			<mvc:mapping path="/pages/publications/form/article/**" />   
+			<bean class="cn.digitalpublishing.inteceptor.PublicationInterceptor"></bean>    
+		</mvc:interceptor>
+		<!-- <mvc:interceptor>
+			<mvc:mapping path="/index/search"/>
+			<mvc:mapping path="/index/searchLicense"/>
+			<mvc:mapping path="/index/advancedSearchSubmit"/>
+			<bean class="cn.digitalpublishing.inteceptor.SearchInterceptor"></bean>    
+		</mvc:interceptor>   -->
+		<!-- <mvc:interceptor>
+			<mvc:mapping path="/pages/publications/form/article/**"/>
+			<mvc:mapping path="/pages/publications/form/journaldetail/**"/>
+			<mvc:mapping path="/pages/publications/form/journalarticle/**"/>
+			<bean class="cn.digitalpublishing.inteceptor.PDAInterceptor"></bean>
+		</mvc:interceptor> -->
+		<mvc:interceptor>
+			<mvc:mapping path="/pages/cart/form/add"/>
+			<bean class="cn.digitalpublishing.inteceptor.CartInterceptor"></bean>
+		</mvc:interceptor>  
+	</mvc:interceptors> 
+	<mvc:view-controller path="/" view-name="forward:/index" /> 
+	
+<!-- 	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> -->
+<!-- 		<property name="exceptionMappings"> -->
+<!-- 			<props> -->
+<!-- 				<prop key="java.lang.Exception">error</prop> -->
+<!-- 			</props> -->
+<!-- 		</property> -->
+<!--     </bean> -->
+</beans>

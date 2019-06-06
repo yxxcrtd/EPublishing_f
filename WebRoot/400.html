@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>信息展示-易阅通</title>
+<link href="css/reset.css" rel="stylesheet" type="text/css"/>
+<link href="css/common.css" rel="stylesheet" type="text/css"/>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+function initMenu() {
+  $('#menu ul').hide();
+  $('#menu ul:first').show();
+  $('#menu li a').click(
+    function() {
+      var checkElement = $(this).next();
+      if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+        return false;
+        }
+      if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+        $('#menu ul:visible').slideUp('normal');
+        checkElement.slideDown('normal');
+        return false;
+        }
+      }
+    );
+  }
+$(document).ready(function() {initMenu();});
+});
+
+</script>
+</head>
+
+<body>
+<div class="big"> 
+  <!--以下top state -->
+  <div class="top">
+    <div class="logo"> <a href="index.html"><img src="images/cnpiec_logo_zh_CN.png" width="250" height="71" /></a> <img src="images/topbg_2.gif" /> <img src="images/beijing-logo.png" width="187" height="35" style="margin-bottom:13px;" /> </div>
+    <div class="function">
+      <div class="quicklink">
+            	<ul>
+                	<li><img src="images/quick_04.png"/><a href="#">检索帮助</a></li>
+                    <li><img src="images/quick_03.png"/><a href="#">购物车</a></li>
+                    <li><img src="images/quick_02.png"/><a href="#">English</a></li>
+                	<li><img src="images/quick_01.png"><a href="#">登录</a></li>
+               </ul>           	
+            </div>
+      <div class="nav">
+        <ul>
+          <li class="nav_lia"><a href="#">搜索历史</a></li>
+          <li class="nav_lib"><a href="#">我的书架</a></li>
+          <li class="nav_lic"><a href="#">联系我们</a></li>
+          <li class="nav_lid"><a href="#">首页</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--以上top end --> 
+  <!--以下search state -->
+  <div class="banner">
+    <div class="banner_login">
+  	<form method="get">
+    	<input type="text" class="search" />
+        <input type="image" src="images/search_02.gif" class="sea_img" />
+        <a href="#"><img src="images/advanced.gif" /></a>
+    </form>
+    </div>
+    <div class="banner_img" id="full-screen-slider">
+      <ul id="slides">
+		<li style="background:url('images/img_01.jpg') no-repeat center top"><a>中图书苑</a></li>
+		<li style="background:url('images/img_04.jpg') no-repeat center top"><a>中图书苑</a></li>
+        <li style="background:url('images/img_02.jpg') no-repeat center top"><a>中图书苑</a></li>
+        <li style="background:url('images/img_03.jpg') no-repeat center top"><a>中图书苑</a></li>
+	</ul>
+    </div>
+  </div>
+  <!--以上search end --> 
+  
+  <!--以下中间内容块开始-->
+  <div class="main">
+  	<div class="login">
+     <h1>错误提示</h1>
+     <div class="zhuce">
+       <div class="zhuce_xinxi" style="text-align:center; margin-top:30px; color:#666d75;">
+          <p><img src="images/404.png" /></p>
+          <p style="font-size:14px; margin-bottom:8px;">呃 。。。对不起，您还没有访问此出版物的授权</p>
+          
+        </div>
+     </div>
+    </div>
+    <!--左侧内容结束-->
+    <div class="signin">
+    <h1>机构管理员</h1>
+      <ul id="menu">
+        <li><a href="#">基础设置</a>
+          <ul>
+            <li><a href="#">更新资料</a></li>
+            <li><a href="#">更新密码</a></li>
+            <li><a href="#">LOGO设置</a></li>
+            <li><a href="#">MARC数据</a></li>
+          </ul>
+        </li>
+        <li><a href="#">专家信息服务</a>
+          <ul>
+            <li><a href="#">专家用户管理</a></li>
+            <li><a href="#">专家用户注册</a></li>
+          </ul>
+        </li>
+        <li><a href="#">订阅服务</a>
+          <ul>
+            <li><a href="#">图书订阅</a></li>
+            <li><a href="#">期刊订阅</a></li>
+            <li><a href="#">数据库订阅</a></li>
+            <li><a href="#">产品包订阅</a></li>
+          </ul>
+        </li>
+        <li><a href="#">订单服务</a>
+          <ul>
+            <li><a href="#">机构订单信息</a></li>
+            <li><a href="#">机构消费信息</a></li>
+          </ul>
+        </li>
+        <li><a href="#">提醒服务</a>
+          <ul>
+            <li><a href="#">查看当前学科提醒</a></li>
+            <li><a href="#">添加新的学科提醒</a></li>
+          </ul>
+        </li>
+        <li><a href="#">阅读服务</a>
+          <ul>
+            <li><a href="#">图书馆收藏</a></li>
+            <li><a href="#">图书馆推荐</a></li>
+            <li><a href="#">搜索历史管理</a></li>
+            <li><a href="#">搜索文件夹管理</a></li>
+          </ul>
+        </li>
+        <li><a href="#">统计服务</a>
+          <ul>
+            <li><a href="#">访问统计</a></li>
+            <li><a href="#">浏览统计</a></li>
+            <li><a href="#">搜索统计</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--以上中间内容块结束-->
+  <div class="foot">
+    <div class="f_title">
+      <p>客户服务</p>
+      <p>关于我们</p>
+      <p>帮助</p>
+      <p>语种</p>
+    </div>
+    <ul>
+      <li>
+        <p>服务邮箱：service@cnpiec.com.cn</p>
+        <p>联系电话：8610-65066688</p>
+        <p>咨询时间：09:00-11:30<br />
+          13:00-17:00<br />
+          （工作日|weekday）</p>
+        <p>投诉邮箱：problems@cnpiec.com.cn</p>
+      </li>
+      <li>
+        <p><a href="#">业务介绍</a></p>
+      </li>
+      <li>
+        <p><a href="#">登录与注册</a></p>
+        <p><a href="#">查看电子资源</a></p>
+        <p><a href="#">支付与预存</a></p>
+        <p><a href="#">下载和查看</a></p>
+      </li>
+      <li>
+        <p><a href="#">English</a></p>
+        <p><a href="#">中 文</a></p>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
